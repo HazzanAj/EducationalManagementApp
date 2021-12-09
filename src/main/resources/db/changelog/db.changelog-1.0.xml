@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="1" author="AjaoH">
+        <sql>
+            CREATE TABLE user(
+                                 id BIGINT NOT NULL AUTO_INCREMENT,
+                                 username VARCHAR (255) NOT NULL,
+                                 name VARCHAR (255) NOT NULL,
+                                 password VARCHAR (255) NOT NULL,
+                                 role VARCHAR (255) NOT NULL,
+                                 CONSTRAINT PK_id PRIMARY  KEY (id)
+            );
+        </sql>
+        <rollback>
+            DROP TABLE user;
+        </rollback>
+    </changeSet>
+
+    <changeSet id="2" author="AjaoH">
+        <sql>
+            CREATE TABLE course (
+                                    id BIGINT NOT NULL AUTO_INCREMENT,
+                                    coursePlace VARCHAR(255) NOT NULL,
+                                    courseName  VARCHAR(255) NOT NULL,
+                                    courseLectureTime VARCHAR(255) NOT NULL,
+                                    courseDuration VARCHAR(255) NOT NULL,
+                                    courseInstructor VARCHAR(255) NOT NULL,
+                                    courseFee VARCHAR(255) NOT NULL,
+                                    CONSTRAINT PK_id PRIMARY KEY (id)
+                                    );
+        </sql>
+        <rollback>
+            DROP TABLE course;
+        </rollback>
+    </changeSet>
+
+    <changeSet id="3" author="AjaoH">
+        <sql>
+            CREATE TABLE allStudent (
+                                    id BIGINT NOT NULL AUTO_INCREMENT,
+                                    allStudentFirstName VARCHAR(255) NOT NULL,
+                                    allStudentLastName  VARCHAR(255) NOT NULL,
+                                    allStudentNationality VARCHAR(255) NOT NULL,
+                                    allStudentGender VARCHAR(255) NOT NULL,
+                                    CONSTRAINT PK_id PRIMARY KEY (id)
+            );
+        </sql>
+        <rollback>
+            DROP TABLE allStudent;
+        </rollback>
+    </changeSet>
+
+    <changeSet id="4" author="AjaoH">
+        <sql>
+            CREATE TABLE registeredStudent (
+                                        id BIGINT NOT NULL AUTO_INCREMENT,
+                                        regStuFirstName VARCHAR(255) NOT NULL,
+                                        regStuLastName  VARCHAR(255) NOT NULL,
+                                        regStuNationality VARCHAR(255) NOT NULL,
+                                        regStuGender VARCHAR(255) NOT NULL,
+                                        CONSTRAINT PK_id PRIMARY KEY (id)
+            );
+        </sql>
+        <rollback>
+            DROP TABLE  registeredStudent;
+        </rollback>
+    </changeSet>
+    <changeSet id="5" author="AjaoH">
+        <sql>
+            CREATE TABLE unRegisteredStudent (
+                                               id BIGINT NOT NULL AUTO_INCREMENT,
+                                               unRegStuFirstName VARCHAR(255) NOT NULL,
+                                               unRegStuLastName  VARCHAR(255) NOT NULL,
+                                               unRegStuNationality VARCHAR(255) NOT NULL,
+                                               unRegStuGender VARCHAR(255) NOT NULL,
+                                               CONSTRAINT PK_id PRIMARY KEY (id)
+            );
+        </sql>
+        <rollback>
+            DROP TABLE  unRegisteredStudent;
+        </rollback>
+    </changeSet>
+    <changeSet id="5" author="AjaoH">
+        <sql>
+            CREATE TABLE unRegisteredStudent (
+                                                 id BIGINT NOT NULL AUTO_INCREMENT,
+                                                 unRegStuFirstName VARCHAR(255) NOT NULL,
+                                                 unRegStuLastName  VARCHAR(255) NOT NULL,
+                                                 unRegStuNationality VARCHAR(255) NOT NULL,
+                                                 unRegStuGender VARCHAR(255) NOT NULL,
+                                                 CONSTRAINT PK_id PRIMARY KEY (id)
+            );
+        </sql>
+        <rollback>
+            DROP TABLE  unRegisteredStudent;
+        </rollback>
+    </changeSet>
+
+    <changeSet id="6" author="AjaoH">
+        <sql>
+            INSERT INTO user (username, name, password, role) values("instructor1", "Insturtor Timothy", "random", "TEACHER");
+            INSERT INTO user (username, name, password, role) values("instructor2", "Insturtor Eetu", "random","TEACHER");
+            INSERT INTO user (username, name, password, role) values("instructor3", "Insturtor Victoria", "random", "TEACHER");
+        </sql>
+        <rollback>
+            TRUNCATE TABLE user;
+        </rollback>
+    </changeSet>
+    <changeSet id="7" author="AjaoH">
+        <sql>
+            INSERT INTO course (coursePlace, courseName, courseLectureTime, courseDuration, courseInstructor,courseFee ) values
+            ("Online","Java","8:00am","4hours","Smith Brown","200e");
+            INSERT INTO course (coursePlace, courseName, courseLectureTime, courseDuration, courseInstructor,courseFee) values
+            ("Online","JavaScript","8:00am","4hours","James Brown","200e");
+            INSERT INTO course (coursePlace, courseName, courseLectureTime, courseDuration, courseInstructor,courseFee) values
+            ("Online","Sotware Testing","8:00am","4hours","Smith Brown","200e");
+        </sql>
+        <rollback>
+            TRUNCATE TABLE course;
+        </rollback>
+    </changeSet>
+    <changeSet id="8" author="AjaoH">
+        <sql>
+            INSERT INTO registeredstudent (regStuFirstName, regStuLastName, regStuNationality, regStuGender ) values
+                ("Thomas","Juha","Finnish","Male");
+            INSERT INTO registeredstudent  (regStuFirstName, regStuLastName, regStuNationality, regStuGender ) values
+                ("Pirkko","Anna","Finnish","Female");
+            INSERT INTO registeredstudent (regStuFirstName, regStuLastName, regStuNationality, regStuGender) values
+                ("Markus","Matti","Finnish","Male");
+        </sql>
+        <rollback>
+            TRUNCATE TABLE registeredstudent;
+        </rollback>
+    </changeSet>
+    <changeSet id="9" author="AjaoH">
+        <sql>
+            INSERT INTO unregisteredstudent (unRegStuFirstName, unRegStuLastName, unRegStuNationality, unRegStuGender ) values
+                ("Clement","White","American","Male");
+            INSERT INTO unregisteredstudent  (unRegStuFirstName, unRegStuLastName, unRegStuNationality, unRegStuGender ) values
+                ("Veronica","Anna","British","Female");
+            INSERT INTO unregisteredstudent (unRegStuFirstName, unRegStuLastName, unRegStuNationality, unRegStuGender) values
+                ("Katia","Matoinen","Finnish","Female");
+        </sql>
+        <rollback>
+            TRUNCATE TABLE unregisteredstudent;
+        </rollback>
+    </changeSet>
+
+    <changeSet id="10" author="AjaoH">
+        <sql>
+            INSERT INTO allstudent (allStudentFirstName,allStudentLastName, allStudentNationality, allStudentGender ) values
+                ("Clement","White","American","Male");
+            INSERT INTO allstudent  (allStudentFirstName,allStudentLastName, allStudentNationality, allStudentGender ) values
+                ("Veronica","Anna","British","Female");
+            INSERT INTO allstudent (allStudentFirstName,allStudentLastName, allStudentNationality, allStudentGender) values
+                ("Katia","Matoinen","Finnish","Female");
+            INSERT INTO allstudent (allStudentFirstName,allStudentLastName, allStudentNationality, allStudentGender ) values
+                ("Thomas","Juha","Finnish","Male");
+            INSERT INTO allstudent  (allStudentFirstName,allStudentLastName, allStudentNationality, allStudentGender ) values
+                ("Pirkko","Anna","Finnish","Female");
+            INSERT INTO allstudent (allStudentFirstName,allStudentLastName, allStudentNationality, allStudentGender) values
+                ("Markus","Matti","Finnish","Male");
+
+        </sql>
+        <rollback>
+            TRUNCATE TABLE allstudent;
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
