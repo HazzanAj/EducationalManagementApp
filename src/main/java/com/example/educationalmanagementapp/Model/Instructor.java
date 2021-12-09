@@ -12,7 +12,7 @@ import java.util.List;
 public class Instructor  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false, updatable = false)// we don't need to pass this it will be generated automatically.
+    @Column(nullable = false, updatable = false)
     private Long id;
     private String instructorName;
     private String instructorCourse;
