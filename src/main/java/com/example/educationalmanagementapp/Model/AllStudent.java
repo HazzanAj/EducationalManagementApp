@@ -1,6 +1,7 @@
 package com.example.educationalmanagementapp.Model;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,10 +18,14 @@ public class AllStudent implements Serializable {
     private String allStudentLastName;
     private String allStudentNationality;
     private String allStudentGender;
-
+    private String allStudentCode;
     @OneToMany(mappedBy = "allStudent")
     private List<RegisteredStudent> registeredStudent;
 
     @OneToMany(mappedBy = "allStudent")
     private List<UnRegisteredStudent> unRegisteredStudent;
+    public void setAllStudentCode(String allStudentCode) {
+        this.allStudentCode = allStudentCode ;
+    }
+
 }
